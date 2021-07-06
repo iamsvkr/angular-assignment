@@ -1,0 +1,129 @@
+<div *ngIf="account">
+    <form class="row g-3" [formGroup]="accountForm" (ngSubmit)="onAccountFormSubmit()">
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" 
+                        class="form-control form-control-sm" 
+                        id="accountName"
+                        placeholder="Please enter account name" 
+                        formControlName="accountName"
+                        [ngClass]="accountForm.get('accountName')!.invalid && 
+                        (accountForm.get('accountName')!.dirty || accountForm.get('accountName')!.touched)?'is-invalid':''">
+                <label for="accountName">{{formLabel.ACCOUNT_NAME}}</label>
+                <div class="invalid-feedback" 
+                     *ngIf="accountForm.get('accountName')!.errors && 
+                accountForm.get('accountName')!.hasError('required')">{{formMessage.ACCOUNT_NAME_REQUIRED}}</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-floating">
+                <textarea
+                        class="form-control form-control-sm" 
+                        id="accountAddress"
+                        placeholder="Please enter account address" 
+                        formControlName="accountAddress" 
+                        [ngClass]="accountForm.get('accountAddress')!.invalid && 
+                        (accountForm.get('accountAddress')!.dirty || accountForm.get('accountAddress')!.touched)?'is-invalid':''"></textarea>
+                <label for="accountAddress">{{formLabel.ACCOUNT_ADDRESS}}</label>
+                <div class="invalid-feedback" 
+                     *ngIf="accountForm.get('accountAddress')!.errors && 
+                accountForm.get('accountAddress')!.hasError('required')">{{formMessage.ACCOUNT_ADDRESS_REQUIRED}}</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" 
+                        class="form-control form-control-sm" 
+                        id="panNumber"
+                        placeholder="Please enter pan name" 
+                        formControlName="panNumber" 
+                        [ngClass]="accountForm.get('panNumber')!.invalid && 
+                        (accountForm.get('panNumber')!.dirty || accountForm.get('panNumber')!.touched)?'is-invalid':''">
+                <label for="panNumber">{{formLabel.PAN}}</label>
+                <div class="invalid-feedback" 
+                     *ngIf="accountForm.get('panNumber')!.errors && 
+                accountForm.get('panNumber')!.hasError('required')">{{formMessage.ACCOUNT_PAN_REQUIRED}}</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="chkGSTRegistration"
+                    formControlName="isGSTRegistered">
+                <label class="form-check-label" for="chkGSTRegistration">
+                    {{formLabel.GST_REGISTERED}}
+                </label>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="accountForm.value.isGSTRegistered">
+            <div class="form-floating">
+                <input type="text" class="form-control form-control-sm" id="accountGSTNumber"
+                    placeholder="Please enter GST Number" formControlName="gstNumber">
+                <label for="accountGSTNumber">{{formLabel.GST_NUMBER}}</label>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" 
+                        class="form-control form-control-sm" 
+                        id="bankAccountNumber"
+                        placeholder="Please enter bank account number" 
+                        formControlName="bankAccountNumber" 
+                        [ngClass]="accountForm.get('bankAccountNumber')!.invalid && 
+                        (accountForm.get('bankAccountNumber')!.dirty || accountForm.get('bankAccountNumber')!.touched)?'is-invalid':''">
+                <label for="bankAccountNumber">{{formLabel.BANK_ACCOUNT_NUMBER}}</label>
+                <div class="invalid-feedback" 
+                     *ngIf="accountForm.get('bankAccountNumber')!.errors && 
+                accountForm.get('bankAccountNumber')!.hasError('required')">{{formMessage.BANK_ACCOUNT_NUMBER_REQUIRED}}</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 form-floating">
+                    <input type="text" 
+                            class="form-control form-control-sm" 
+                            id="bankName"
+                            placeholder="Please enter bank name" 
+                            formControlName="bankName" 
+                            [ngClass]="accountForm.get('bankName')!.invalid && 
+                            (accountForm.get('bankName')!.dirty || accountForm.get('bankName')!.touched)?'is-invalid':''">
+                    <label for="bankName">{{formLabel.BANK_NAME}}</label>
+                    <div class="invalid-feedback" 
+                         *ngIf="accountForm.get('bankName')!.errors && 
+                    accountForm.get('bankName')!.hasError('required')">{{formMessage.BANK_NAME_REQUIRED}}</div>
+                </div>
+                <div class="col-md-6 form-floating">
+                    <input type="text" 
+                            class="form-control form-control-sm" 
+                            id="bankBranch"
+                            placeholder="Please enter bank branch" 
+                            formControlName="bankBranch" 
+                            [ngClass]="accountForm.get('bankBranch')!.invalid && 
+                            (accountForm.get('bankBranch')!.dirty || accountForm.get('bankBranch')!.touched)?'is-invalid':''">
+                    <label for="bankBranch">{{formLabel.BANK_BRANCH}}</label>
+                    <div class="invalid-feedback" 
+                         *ngIf="accountForm.get('bankBranch')!.errors && 
+                    accountForm.get('bankBranch')!.hasError('required')">{{formMessage.BANK_BRANCH_REQUIRED}}</div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" 
+                        class="form-control form-control-sm" 
+                        id="ifscCode"
+                        placeholder="Please enter IFSC Code" 
+                        formControlName="ifscCode" 
+                        [ngClass]="accountForm.get('ifscCode')!.invalid && 
+                        (accountForm.get('ifscCode')!.dirty || accountForm.get('ifscCode')!.touched)?'is-invalid':''">
+                <label for="accountName">{{formLabel.IFSC_CODE}}</label>
+                <div class="invalid-feedback" 
+                     *ngIf="accountForm.get('ifscCode')!.errors && 
+                accountForm.get('ifscCode')!.hasError('required')">{{formMessage.IFSC_CODE_REQUIRED}}</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-primary" type="submit" [class.disabled]="accountForm.invalid">Save</button>
+        </div>
+    </form>
+</div>

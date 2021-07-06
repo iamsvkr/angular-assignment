@@ -1,0 +1,17 @@
+<div class="container mt-2">
+    <h4>Manage clients</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <app-client-entry [client]="clientValue" (onClientFormSubmit)="onClientSave($event)" class="app-client-entry-component"></app-client-entry>
+        </div>
+        <div class="col-md-8">
+            <ag-grid-angular style="height: 100vh; width: 90%;" class="ag-theme-material client-grid" [rowData]="clients"
+                [columnDefs]="columnDefs"
+                [rowSelection]="'single'"
+                (gridReady)="onGridReady($event)"
+                (selectionChanged)="onSelectionChanged($event)">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>

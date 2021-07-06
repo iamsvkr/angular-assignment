@@ -1,0 +1,55 @@
+<!-- -->
+<div *ngIf="client">
+    <form class="row g-3" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <div class="col-md-12">
+            <div class="form-floating">
+                <input type="text" 
+                        class="form-control form-control-sm" 
+                        id="clientName"
+                        name="clientName"
+                        placeholder="Please enter client name" 
+                        formControlName="clientName" 
+                        [ngClass]="clientForm.get('clientName')!.invalid && 
+                        (clientForm.get('clientName')!.dirty || clientForm.get('clientName')!.touched)?'is-invalid':''">
+                <label for="clientName">Client name</label>
+                <div class="invalid-feedback" 
+                     *ngIf="clientForm.get('clientName')!.errors && 
+                clientForm.get('clientName')!.hasError('required')">Please eneter client name</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-floating">
+                <textarea   type="textarea" 
+                            class="form-control form-control-sm" 
+                            id="clientAddress"
+                            placeholder="Please enter client address" 
+                            formControlName="clientAddress"
+                            [class.is-invalid]="clientForm.get('clientAddress')!.invalid && 
+                            (clientForm.get('clientAddress')!.dirty || clientForm.get('clientAddress')!.touched)?'is-invalid':''"></textarea>
+                <label for="clientAddress">Client address</label>
+                <div class="invalid-feedback" 
+                *ngIf="clientForm.get('clientAddress')!.errors && 
+                       clientForm.get('clientAddress')!.hasError('required')">Please eneter client address</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="chkGSTApplication"
+                    formControlName="isGSTApplication">
+                <label class="form-check-label" for="chkGSTApplication">
+                    GST Application
+                </label>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="clientForm.value.isGSTApplication">
+            <div class="form-floating">
+                <input type="text" class="form-control form-control-sm" id="clientGSTNumber"
+                    placeholder="Please enter GST Number" formControlName="clientGSTNumber">
+                <label for="clientGSTNumber">GST Number</label>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-primary" type="submit" [class.disabled]="clientForm.invalid">Save</button>
+        </div>
+    </form>
+</div>

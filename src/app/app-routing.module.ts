@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'invoicer' },
+  {
+    path: 'invoicer', 
+    loadChildren: () => import('./invoicer/invoicer.module').then(m => m.InvoicerModule)
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

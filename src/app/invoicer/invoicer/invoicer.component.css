@@ -1,0 +1,16 @@
+a {
+    text-decoration: underline;
+    color: black;
+}
+ul{
+    margin: auto;
+    list-style: none;
+}
+li{
+    padding: 5px;
+    font-size: medium;
+    font-weight: bold;
+}
+.invoicer_side_nav-seperator{
+    border-right:2px solid black;
+}

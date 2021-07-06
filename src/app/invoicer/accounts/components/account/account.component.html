@@ -1,0 +1,40 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <span>Bank Detail-{{modalValue.accountName}}</span>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body account-detail">
+        <div class="row">
+            <div class="col-md-12">{{modalValue.bankAccountNumber}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{modalValue.bankName}}</div>
+            <div class="col-md-6">{{modalValue.bankBranch}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{modalValue.ifscCode}}</div>
+        </div>
+    </div>
+</ng-template>
+<div class="container mt-2">
+    <h4>Manage Accounts</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <app-account-entry [account]="account" (onFormSubmit)="onAccountFormSubmit($event);"></app-account-entry>
+        </div>
+        <div class="col-md-8">
+            <ag-grid-angular style="height: 80vh; width: 90%;" class="ag-theme-material" [rowData]="accounts"
+            [columnDefs]="columnDefs"
+            [rowSelection]="'single'"
+            [frameworkComponents]="frameworkComponents"
+            [context]="context"
+            [suppressRowClickSelection]="'true'"
+            (gridReady)="onGridReady($event)"
+            (selectionChanged)="onSelectionChanged($event)">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>
