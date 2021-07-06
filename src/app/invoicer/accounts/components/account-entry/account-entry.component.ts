@@ -45,15 +45,17 @@ export class AccountEntryComponent implements OnInit,OnChanges {
     }
   }
   applyInputValueChange(account:IAccount){
-    this.accountForm.get("accountName")!.patchValue(account.accountName);
-    this.accountForm.get("accountAddress")!.patchValue(account.accountAddress);
-    this.accountForm.get("panNumber")!.patchValue(account.panNumber);
-    this.accountForm.get("isGSTRegistered")!.patchValue(account.isGSTRegistered);
-    this.accountForm.get("gstNumber")!.patchValue(account.gstNumber);
-    this.accountForm.get("bankAccountNumber")!.patchValue(account.bankAccountNumber);
-    this.accountForm.get("bankName")!.patchValue(account.bankName);
-    this.accountForm.get("bankBranch")!.patchValue(account.bankBranch);
-    this.accountForm.get("ifscCode")!.patchValue(account.ifscCode);
+    if (this.accountForm) {
+      this.accountForm.get("accountName")!.patchValue(account.accountName);
+      this.accountForm.get("accountAddress")!.patchValue(account.accountAddress);
+      this.accountForm.get("panNumber")!.patchValue(account.panNumber);
+      this.accountForm.get("isGSTRegistered")!.patchValue(account.isGSTRegistered);
+      this.accountForm.get("gstNumber")!.patchValue(account.gstNumber);
+      this.accountForm.get("bankAccountNumber")!.patchValue(account.bankAccountNumber);
+      this.accountForm.get("bankName")!.patchValue(account.bankName);
+      this.accountForm.get("bankBranch")!.patchValue(account.bankBranch);
+      this.accountForm.get("ifscCode")!.patchValue(account.ifscCode);
+    }
   }
   onAccountFormSubmit():void{
     let account:IAccount =  {

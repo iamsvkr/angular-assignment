@@ -41,10 +41,12 @@ export class ClientEntryComponent implements OnInit,OnChanges {
     }
   }
   applyInputValueChange(client:IClientFormModel){
-    this.clientForm.get("clientName")!.patchValue(client.clientName);
-    this.clientForm.get("clientAddress")!.patchValue(client.clientAddress);
-    this.clientForm.get("isGSTApplication")!.patchValue(client.isGSTApplication);
-    this.clientForm.get("clientGSTNumber")!.patchValue(client.clientGSTNumber);
+    if (this.clientForm) {
+      this.clientForm.get("clientName")!.patchValue(client.clientName);
+      this.clientForm.get("clientAddress")!.patchValue(client.clientAddress);
+      this.clientForm.get("isGSTApplication")!.patchValue(client.isGSTApplication);
+      this.clientForm.get("clientGSTNumber")!.patchValue(client.clientGSTNumber);
+    }
   }
   onSubmit():void{
     let client:IClientFormModel =  {
