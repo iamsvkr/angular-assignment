@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-material.css";
+.ag-theme-material .ag-header-cell,
+.ag-theme-material .ag-header-group-cell {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.ag-theme-material .ag-cell,
+.ag-theme-material .ag-full-width-row .ag-cell-wrapper.ag-row-group {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
